@@ -31,17 +31,23 @@
 
                 // pripremamo upit
                 $sql = "SELECT * FROM posts WHERE Id = ?";
+                $sql_comments = "SELECT * FROM comments WHERE Post_id = ?";
                 $statement = $connection->prepare($sql);
+                $statement_comments = $connection->prepare($sql_comments);
 
                 // izvrsavamo upit
                 $statement->execute([$_GET['id']]);
+                $statement_comments->execute([$_GET['id']]);
 
                 // zelimo da se rezultat vrati kao asocijativni niz.
                 // ukoliko izostavimo ovu liniju, vratice nam se obican, numerisan niz
                 $statement->setFetchMode(PDO::FETCH_ASSOC);
+                $statement_comments->setFetchMode(PDO::FETCH_ASSOC);
 
                 // punimo promenjivu sa rezultatom upita
                 $single_post = $statement->fetch();
+                $comments = $statement_comments->fetchAll();
+               
 
                 
 
@@ -58,6 +64,26 @@
         
     </div><!-- /.blog-post -->
 
+
+        <div>
+            <h3>Komentari</h3>
+​
+        
+            <?php 
+                foreach($comments as $comment) {
+            ?>
+                        
+                <ul>
+                    <li>Autor: <br/> <?php echo($comment['Author']) ?></li><br/>
+                    <li>Komentar: <br/> <?php echo($comment['Text']) ?></li><br/>
+                    <hr>
+                </ul>             
+                
+            <?php
+                }
+            ?>    
+
+        </div>
     
 
     
