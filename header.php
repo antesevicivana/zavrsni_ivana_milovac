@@ -1,4 +1,3 @@
-
 <html>
     <head>
 
@@ -15,6 +14,7 @@
         
         <!-- Custom styles for this template -->
         <link href="styles/blog.css" rel="stylesheet">
+        <link href="styles/styles.css" rel="stylesheet">
     </head>
     <body>
         <header>
