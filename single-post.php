@@ -64,18 +64,41 @@
         
     </div><!-- /.blog-post -->
 
+                <script type="text/javascript">
+                    function ShowHideComments(btn) {
+                        
+                        var comments = document.getElementById("comments");
+                        if (btn.value == "No") {
+                            comments.style.display = "block";
+                            btn.value = "Yes";
+                            btn.innerText = 'Hide comments';
+                            
+                        } else {
+                            comments.style.display = "none";
+                            btn.value = "No";
+                            btn.innerText = 'Show comments';
+                        }
+                    
+                    }
 
-        <div>
-            <h3>Komentari</h3>
+                    
+                </script>
+
+
+        <h3>Comments</h3>
+        <button class='btn' value="Yes" onclick="ShowHideComments(this)">Hide comments</button>
+        <div id='comments'>
+
+            
 ​
-        
+            
             <?php 
                 foreach($comments as $comment) {
             ?>
                         
                 <ul>
-                    <li>Autor: <br/> <?php echo($comment['Author']) ?></li><br/>
-                    <li>Komentar: <br/> <?php echo($comment['Text']) ?></li><br/>
+                    <li>Author: <br/> <?php echo($comment['Author']) ?></li><br/>
+                    <li>Comment: <br/> <?php echo($comment['Text']) ?></li><br/>
                     <hr>
                 </ul>             
                 
