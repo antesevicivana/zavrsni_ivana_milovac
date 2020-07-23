@@ -1,6 +1,11 @@
 <?php
     // ako su mysql username/password i ime baze na vasim racunarima drugaciji
     // obavezno ih ovde zamenite
+
+    if (!isset($_GET['id'])) {
+        die('404');
+    }
+
     $servername = "127.0.0.1";
     $username = "root";
     $password = "vivify";
@@ -29,6 +34,8 @@
 
             <?php
 
+                
+
                 // pripremamo upit
                 $sql = "SELECT * FROM posts WHERE Id = ?";
                 $sql_comments = "SELECT * FROM comments WHERE Post_id = ?";
@@ -48,9 +55,7 @@
                 $single_post = $statement->fetch();
                 $comments = $statement_comments->fetchAll();
                
-
-                
-
+          
             ?>
 
             
@@ -103,6 +108,7 @@
                 </ul>             
                 
             <?php
+            
                 }
             ?>    
 
@@ -112,6 +118,8 @@
     
 
 </div><!-- /.blog-main -->
+
+            
 <?php
     
     include "sidebar.php"; 
