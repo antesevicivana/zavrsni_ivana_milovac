@@ -21,7 +21,7 @@
 
     if (!empty($_POST['author']) && !empty($_POST['text']) && !empty($_POST['post_id']) ) {
 
-        echo('bla');
+    
 
     $author = $_POST['author'];
     $text = $_POST['text'];
@@ -37,5 +37,8 @@
         header('Location: /single-post.php?id=' . $post_id);
 
     }
-    
-        
+
+   
+
+               
+

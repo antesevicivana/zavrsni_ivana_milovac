@@ -29,3 +29,7 @@ a {
     background-color: #b34848
     ;
 }
+
+#alert {
+    display: none;
+}
