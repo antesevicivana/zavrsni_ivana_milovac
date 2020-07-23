@@ -90,30 +90,16 @@
                 </script>
 
 
-        <h3>Comments</h3>
-        <button class='btn' value="Yes" onclick="ShowHideComments(this)">Hide comments</button>
-        <div id='comments'>
+        
 
-            
-​
-            
-            <?php 
-                foreach($comments as $comment) {
-            ?>
-                        
-                <ul>
-                    <li>Author: <br/> <?php echo($comment['Author']) ?></li><br/>
-                    <li>Comment: <br/> <?php echo($comment['Text']) ?></li><br/>
-                    <hr>
-                </ul>             
-                
-            <?php
-            
-                }
-            ?>    
 
-        </div>
+        
+<?php
     
+    
+    include "comments.php"
+?>
+
 
     
 
