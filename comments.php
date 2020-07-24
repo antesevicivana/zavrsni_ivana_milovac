@@ -3,11 +3,11 @@
        
        <h3>Comments</h3>
         <div class="col-sm-8 blog-main">
-            <div class='alert-danger' id='alert'>OVDE JE</div>
+            <div class='alert-danger' id='alert'></div>
 
 
 
-                <form method="POST" action="/create-comment.php" id='form' name = "form" ">
+                <form method="POST" action="/create-comment.php" id='form' name = "form" >
                     <p>
                         <input type='hidden' name='post_id' value='<?php echo $single_post['Id']; ?>'/>
                         <label>Your name:</label>
@@ -28,11 +28,13 @@
             
             <?php 
                 foreach($comments as $comment) {
+                    
             ?>
                         
                 <ul>
                     <li>Author: <br/> <?php echo($comment['Author']) ?></li><br/>
                     <li>Comment: <br/> <?php echo($comment['Text']) ?></li><br/>
+                    <button class='btn-default' id='delete' onclick="Delete(<?php echo($comment['Id']) ?>, <?php echo($single_post['Id']) ?> )">Delete comment</button>
                     <hr>
                 </ul>             
                 
@@ -69,5 +71,12 @@
             
             });
             })();
+
+
+            
+                    
+
+                    
+                
 
         </script>

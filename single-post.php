@@ -39,21 +39,26 @@
                 // pripremamo upit
                 $sql = "SELECT * FROM posts WHERE Id = ?";
                 $sql_comments = "SELECT * FROM comments WHERE Post_id = ?";
+                
                 $statement = $connection->prepare($sql);
                 $statement_comments = $connection->prepare($sql_comments);
+                
 
                 // izvrsavamo upit
                 $statement->execute([$_GET['id']]);
                 $statement_comments->execute([$_GET['id']]);
+                
 
                 // zelimo da se rezultat vrati kao asocijativni niz.
                 // ukoliko izostavimo ovu liniju, vratice nam se obican, numerisan niz
                 $statement->setFetchMode(PDO::FETCH_ASSOC);
                 $statement_comments->setFetchMode(PDO::FETCH_ASSOC);
+                
 
                 // punimo promenjivu sa rezultatom upita
                 $single_post = $statement->fetch();
                 $comments = $statement_comments->fetchAll();
+                
                
           
             ?>
@@ -84,6 +89,13 @@
                             btn.innerText = 'Show comments';
                         }
                     
+                    }
+
+                    function Delete(commentId, postId){
+                        console.log(commentId, postId);
+                        var deleted = document.getElementById('delete');
+                        window.location='/delete-comment.php?id=' +  commentId + '&postId=' + postId;
+
                     }
 
                     
