@@ -71,6 +71,10 @@
         <a href="single-post.php?id=<?php echo($single_post['Id']) ?>"><h2 class="blog-post-title"><?php echo($single_post['Title'])?></h2></a>
         <p class="blog-post-meta"><?php echo($single_post['Created_at']) ?> by <a href="#"><?php echo($single_post['Author']) ?></a></p>
         <div><p><?php echo($single_post['Body']); ?></p></div>
+
+        <button class='btn' id='deletePost' onclick="DeletePost(<?php echo($single_post['Id']) ?>  )">Delete post</button>
+
+    
         
     </div><!-- /.blog-post -->
 
@@ -96,6 +100,13 @@
                         var deleted = document.getElementById('delete');
                         window.location='/delete-comment.php?id=' +  commentId + '&postId=' + postId;
 
+                    }
+
+                    function DeletePost(postId){
+                        var deletedPost=document.getElementById('deletePost');
+                        confirm("Do you really want to delete this post?!");
+                        window.location='delete-post.php?id=' + postId;
+                        
                     }
 
                     
